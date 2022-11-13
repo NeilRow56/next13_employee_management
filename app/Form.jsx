@@ -1,8 +1,9 @@
-
-
 "use client"
+
 import React, { useReducer } from 'react'
 import { BiPlus } from 'react-icons/bi'
+import Success from './Success'
+import Bug from './Bug'
 
 const formReducer = (state, event) => {
     return{
@@ -18,8 +19,13 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(Object.keys(formData).length == 0)
+        return console.log("No form data supplied")
         console.log(formData)
     }
+
+    if(Object.keys(formData).length > 0) return <Bug message={"Error"}></Bug>
+    
 
   return (
     <form
