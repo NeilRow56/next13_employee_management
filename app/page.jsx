@@ -1,57 +1,38 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { BiUserPlus, BiX, BiCheck } from "react-icons/bi";
+import Form from "./Form";
+import Table from "./Table";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
+    <div >
+      <main className="py-5">
+        <h1 className=" text-xl md:text-5xl font-bold text-red-600 text-center py-10">
+          Employee Management
         </h1>
+      <div className="container mx-auto flex justify-between py-5 border-b">
+        <div className="left flex-gap-3">
+          <button className="flex bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-gray-50 hover:text-gray-800 hover:border-indigo-500">
+            Add Employee
+            <span className='px-2'><BiUserPlus size={23}></BiUserPlus></span>
+          </button>
+        </div>       
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
+      </div>
+       {/* Collapsable Form */}
+       <div className="container mx-auto">
+          <Form />
+       </div>
+      
+        
 
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
+        {/* Table */}
+        <div className="container mx-auto">
+               <Table />
         </div>
+        
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+ 
+     
     </div>
   )
 }
