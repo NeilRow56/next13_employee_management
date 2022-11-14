@@ -44,7 +44,7 @@ function Tr({id, name, avatar, email, salary, date, status }) {
         <tr className="bg-gray-50 text-center">
                     <td className="px-16 py-2 flex flex-row items-center">
                         
-                        <img src={avatar || "#" } alt="" />
+                        <img src={avatar || "#" } alt="" className='rounded-full w-10 h-10' />
                         <span className="text-center ml-2 font-semibold">{ name || "unknown" }</span>
                     </td>
                     <td className="px-16 py-2">

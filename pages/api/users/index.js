@@ -1,33 +1,16 @@
 import dbConnect from '../../../database/dbConnect'
+import nc from 'next-connect'
+import { getUsers, newUser } from '../../../database/controllers/userControllers'
 
-export default async function handler(req, res) {
+const handler = nc()
+ 
+dbConnect()
+ 
+handler.get(getUsers)
 
-  dbConnect().catch(() => res.status(405).json({error: "Error in the Connection"}))
+handler.post(newUser)
 
-//   Type of request
-const { method } = req
-
-switch(method) {
-    case'GET':
-        res.status(200).json({ method,name: 'GET Request' })
-         break;
-    case'POST':
-        res.status(200).json({ method,name: 'POST Request' })
-         break;
-    case'PUT':
-        res.status(200).json({ method,name: 'PUT Request' })
-         break;
-    case'DELETE':
-        res.status(200).json({ method,name: 'DELETE Request' })
-         break;
-        default:
-            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE'])
-             res.status(405).end(`Method ${method} Not Allowd`)
-            break;
-
-}
+export default handler
 
 
 
-
-}
